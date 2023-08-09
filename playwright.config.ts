@@ -1,6 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 import baseEnvUrl from './tests/utils/environmentBaseUrl';
+import path from 'path';
 
+// require('dotenv').config();
+export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState.json');
 require('dotenv').config();
 
 export default defineConfig({
@@ -40,6 +43,18 @@ export default defineConfig({
         // storageState: '.auth/admin.json', //use this in case you have multiple projects one per user
       },
       dependencies: ['auth-setup'],
+    },
+    {
+      name: 'setup-applitools',
+      testMatch: /applitools-setup\.ts/,
+    },
+    {
+      name: 'chromium-appl',
+      use: { 
+        ...devices['Desktop Chrome'] ,
+        storageState: STORAGE_STATE_APPL,
+      },
+      dependencies: ['setup-applitools']
     },
   ],
 });
