@@ -4,6 +4,7 @@ import path from 'path';
 
 // require('dotenv').config();
 export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState.json');
+export const STORAGE_STATE_API = path.join(__dirname, './apiStorageState.json');
 require('dotenv').config();
 
 export default defineConfig({
@@ -57,6 +58,20 @@ export default defineConfig({
       
       },
       dependencies: ['setup-applitools']
+    },
+    {
+      name: 'setup-api-login',
+      testMatch: /api-setup\.ts/,
+    },
+    {
+      name: 'chromium-api',
+      use: { 
+        ...devices['Desktop Chrome'] ,
+        storageState: STORAGE_STATE_API,
+        headless: false,
+      
+      },
+      dependencies: ['setup-api-login']
     },
   ],
 });
