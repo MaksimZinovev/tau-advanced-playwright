@@ -6,12 +6,12 @@ Welcome to the course "Advanced Playwright" by [Renata Andrade](https://testingw
 If you are new to Playwright, I invite you to a look at the [Introduction to Playwright](https://testautomationu.applitools.com/instructors/renata_andrade.html) course.
 
 - [Advanced Playwright](#advanced-playwright)
-  * [Chapter 1 - Exercises](#chapter-1---exercises)
-  * [Chapter 2 - Exercises](#chapter-2---exercises)
-  * [Chapter 3 - Exercises](#chapter-3---exercises)
-  * [Chapter 4 - Exercises](#chapter-4---exercises)
-  * [Chapter 5 - Exercises](#chapter-5---exercises)
-  * [Chapter 6 - Exercises](#chapter-6---exercises)
+  - [Chapter 1 - Exercises](#chapter-1---exercises)
+  - [Chapter 2 - Exercises](#chapter-2---exercises)
+  - [Chapter 3 - Exercises](#chapter-3---exercises)
+  - [Chapter 4 - Exercises](#chapter-4---exercises)
+  - [Chapter 5 - Exercises](#chapter-5---exercises)
+  - [Chapter 6 - Exercises](#chapter-6---exercises)
 
 ## Chapter 1 - Exercises
 
@@ -27,9 +27,9 @@ If you are new to Playwright, I invite you to a look at the [Introduction to Pla
 
 1. Implement a regular sign in test and a sign in using stored state for another website that you have access to. If you need a suggestion, you can use https://demo.applitools.com/ (any username and password) or https://www.saucedemo.com/. What challenges did you have?
 
-1. Implement an authentication via API request following this doc https://playwright.dev/docs/auth#authenticate-with-api-request. You can use the same https://demoqa.com/books or any other website. How faster that is compared to the UI sign in?
+1. Implement an authentication via API request following this doc https://playwright.dev/docs/auth#authenticate-with-api-request. You can use the same https://demoqa.com/books or any other website. How faster that is compared to the UI sign in? See https://github.com/microsoft/playwright/issues/15481#issuecomment-1362024619
 
-1. Implement a multi-role sing in test using the "auth-setup" strategy (using something similar to the [auth-setup.ts](/tests/setup/auth-setup.ts) file & [playwright-auth.config.ts](/playwright-auth.config.ts) setup & [profile-stored-auth-multi-role-user.spec.ts](/tests/ui/specs-auth/profile-stored-auth-multi-role-user.spec.ts)) for an application that you have access to. If you need a suggestion, you can use https://www.saucedemo.com/ (there are different users that could be used for different scenarios).
+1. Implement a multi-role sign in test using the "auth-setup" strategy (using something similar to the [auth-setup.ts](/tests/setup/auth-setup.ts) file & [playwright-auth.config.ts](/playwright-auth.config.ts) setup & [profile-stored-auth-multi-role-user.spec.ts](/tests/ui/specs-auth/profile-stored-auth-multi-role-user.spec.ts)) for an application that you have access to. If you need a suggestion, you can use https://www.saucedemo.com/ (there are different users that could be used for different scenarios).
 
 1. Implement a multi-role sing in test using the "auth-setup" strategy (using something similar to the [auth-setup.ts](/tests/setup/auth-setup.ts) file & [playwright-auth.config.ts](/playwright-auth.config.ts) setup & [profile-stored-auth-multi-role-example.spec.ts](/tests/ui/specs-auth/profile-stored-auth-multi-role-example.spec.ts)) for an application that you have access to. If you need a suggestion, you can use https://www.saucedemo.com/ (there are different users that could be used for different scenarios).
 

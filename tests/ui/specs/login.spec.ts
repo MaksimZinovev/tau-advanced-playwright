@@ -7,7 +7,7 @@ const userName = process.env.USERNAME!;
 const password = process.env.PASSWORD!;
 let loginPage: LoginPage;
 
-test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the logged in session
+// test.use({ storageState: { cookies: [], origins: [] } }); // doesn't share the logged in session
 // test.use({ storageState: undefined }); // https://github.com/microsoft/playwright/issues/17396
 test.describe.configure({ mode: 'serial' });
 

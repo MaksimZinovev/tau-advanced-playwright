@@ -1,9 +1,12 @@
 import { test as setup, expect } from "@playwright/test";
 import { STORAGE_STATE_API } from "../../playwright.config";
 
-setup("authenticate via api", async ({ request }) => {
+setup("authenticate via api", async ({ request, page }) => {
   // Send authentication request
-  const response = await request.post(
+
+  // const response = await request.post(
+    await page.goto("https://sfsh.ourpact.com/login")
+    const response = await page.context().request.post(
     "https://demoqa.com/Account/v1/GenerateToken",
     {
       data: {
@@ -15,14 +18,14 @@ setup("authenticate via api", async ({ request }) => {
   await expect(response.status()).toBe(200);
   console.log("JSON response:");
   console.log(await response.json());
-
-  // Extract cookies from the JSON response
-  const jsonResponse = await response.json();
-  const cookies = Object.entries(jsonResponse).map(([key, value]) => `${key}=${value}`);
-
-  // Set the cookies in the request object
-  await request.setCookies(cookies);
-
-  console.log(await request.storageState());
+  console.log("Cookies:");
+  console.log(await page.context().cookies());  
+  // Cookies are not present
+  console.log(await page.context().request.storageState().then(() => {
+    console.log('state written to file!');
+  }).catch((err) => console.log(err)) 
+  );
+  console.log("storageState:");
+  console.log(await page.context().storageState());
   await request.storageState({ path: STORAGE_STATE_API as string });
 });

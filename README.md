@@ -5,7 +5,27 @@
 Hi 👋🏽!
 
 Welcome to the course "Advanced Playwright" by [Renata Andrade](https://testingwithrenata.com/) for the [Test Automation University](https://testautomationu.applitools.com/).
-If you are new to Playwright, I invite you to a look at the [Introduction to Playwright](https://testautomationu.applitools.com/instructors/renata_andrade.html) course.
+Look at the [Introduction to Playwright](https://testautomationu.applitools.com/instructors/renata_andrade.html) course.
+
+## About 
+
+This is a repo with completed exercises from course [Advanced Playwright](https://testautomationu.applitools.com/playwright-advanced/). Forked from [raptatinha/tau-advanced-playwright: Course Advanced Playwright by Renata Andrade for Test Automation University](https://github.com/raptatinha/tau-advanced-playwright)
+
+
+Chapter 1 
+- [x] Exercise 1
+- [x] Exercise 2
+- [x] Exercise 3
+- [x] Exercise 4 - implement the trace of failures in setup
+- [x] Exercise 5 - sign in using stored state 
+- [ ] Exercise 6 - authentication via API request 
+- [ ] Exercise 7- multi-role sign in test
+
+
+## Exercise 6 - authentication via API request issue
+
+![storageState issue](exercises/media/profile.api.spec.ts.jpg)
+
 
 ## Dependencies
 
