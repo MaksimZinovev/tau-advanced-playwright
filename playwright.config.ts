@@ -7,24 +7,24 @@ export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState
 require('dotenv').config();
 
 export default defineConfig({
-  globalSetup: require.resolve('./tests/setup/global-setup'),
-  fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: 0,
-  workers: undefined,
-  reporter: 'html',
-  // timeout: 5000,
-  use: {
-    storageState: 'storageState.json',
-    trace: 'on',
-    baseURL: process.env.ENV === 'production' 
-      ? baseEnvUrl.production.home
-      : process.env.ENV === 'staging' 
-        ? baseEnvUrl.staging.home
-        : baseEnvUrl.local.home
-  },
-
+  reporter: [['html'], ['list']],
+  // globalSetup: require.resolve('./tests/setup/global-setup'),
+  // fullyParallel: false,
+  // forbidOnly: !!process.env.CI,
+  // retries: 0,
+  // workers: undefined,
+  // // timeout: 5000,
+  // use: {
+  //   storageState: 'storageState.json',
+  //   trace: 'on',
+  //   baseURL: process.env.ENV === 'production' 
+  //     ? baseEnvUrl.production.home
+  //     : process.env.ENV === 'staging' 
+  //       ? baseEnvUrl.staging.home
+  //       : baseEnvUrl.local.home
+  // },
   projects: [
+    
     { 
       name: 'auth-setup', 
       testMatch: /auth-setup\.ts/ 
@@ -53,6 +53,8 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'] ,
         storageState: STORAGE_STATE_APPL,
+        headless: false,
+      
       },
       dependencies: ['setup-applitools']
     },
