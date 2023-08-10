@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("https://demoqa.com/books");
 });
 
-test.only(`successful login into bookstore`, async ({ page }) => {
+test(`successful login into bookstore`, async ({ page }) => {
   // Successfully logged in using API login in api-setup
   await expect(page).toHaveURL(/books/i);
   await expect(page.getByText(/tau\-playwright/i)).toBeVisible();

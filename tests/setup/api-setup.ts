@@ -6,7 +6,7 @@ setup("authenticate via api", async ({ request }) => {
   const response = await request.post(
     "https://demoqa.com/Account/v1/GenerateToken",
     {
-      form: {
+      data: {
         password: "TestingWithR3n@t@",
         userName: "tau-playwright",
       },
