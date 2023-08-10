@@ -18,7 +18,7 @@ setup("authenticate via api", async ({ request }) => {
 
   // Extract cookies from the JSON response
   const jsonResponse = await response.json();
-  const cookies = jsonResponse.cookies;
+  const cookies = [jsonResponse.token]; // Assuming the token is the cookie value
 
   // Set the cookies in the request object
   await request.setCookies(cookies);
