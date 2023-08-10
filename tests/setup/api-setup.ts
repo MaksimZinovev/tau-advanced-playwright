@@ -15,6 +15,14 @@ setup("authenticate via api", async ({ request }) => {
   await expect(response.status()).toBe(200);
   console.log("JSON response:");
   console.log(await response.json());
+
+  // Extract cookies from the JSON response
+  const jsonResponse = await response.json();
+  const cookies = jsonResponse.cookies;
+
+  // Set the cookies in the request object
+  await request.setCookies(cookies);
+
   console.log(await request.storageState());
   await request.storageState({ path: STORAGE_STATE_API as string });
 });
