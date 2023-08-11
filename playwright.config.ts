@@ -5,25 +5,26 @@ import path from 'path';
 // require('dotenv').config();
 export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState.json');
 export const STORAGE_STATE_API = path.join(__dirname, './apiStorageState.json');
+export const STORAGE_STATE_SD = path.join(__dirname, './sdStorageStateUser.json');
 require('dotenv').config();
 
 export default defineConfig({
   reporter: [['html'], ['list']],
   // globalSetup: require.resolve('./tests/setup/global-setup'),
-  // fullyParallel: false,
-  // forbidOnly: !!process.env.CI,
-  // retries: 0,
-  // workers: undefined,
-  // // timeout: 5000,
-  // use: {
-  //   storageState: 'storageState.json',
-  //   trace: 'on',
-  //   baseURL: process.env.ENV === 'production' 
-  //     ? baseEnvUrl.production.home
-  //     : process.env.ENV === 'staging' 
-  //       ? baseEnvUrl.staging.home
-  //       : baseEnvUrl.local.home
-  // },
+  fullyParallel: false,
+  forbidOnly: !!process.env.CI,
+  retries: 0,
+  workers: undefined,
+  // timeout: 5000,
+  use: {
+    // storageState: 'storageState.json',
+    trace: 'on',
+    baseURL: process.env.ENV === 'production' 
+      ? baseEnvUrl.production.home
+      : process.env.ENV === 'staging' 
+        ? baseEnvUrl.staging.home
+        : baseEnvUrl.local.home
+  },
   projects: [
     
     { 
@@ -72,6 +73,20 @@ export default defineConfig({
       
       },
       dependencies: ['setup-api-login']
+    },
+    {
+      name: 'setup-saucedemo',
+      testMatch: /saucedemo-setup\.ts/,
+    },
+    {
+      name: 'chromium-saucedemo',
+      use: { 
+        ...devices['Desktop Chrome'] ,
+        storageState: STORAGE_STATE_SD,
+        headless: false,
+      
+      },
+      dependencies: ['setup-saucedemo']
     },
   ],
 });

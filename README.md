@@ -16,10 +16,11 @@ Chapter 1
 - [x] Exercise 1
 - [x] Exercise 2
 - [x] Exercise 3
-- [x] Exercise 4 - implement the trace of failures in setup
-- [x] Exercise 5 - sign in using stored state 
-- [ ] Exercise 6 - authentication via API request 
-- [ ] Exercise 7- multi-role sign in test
+- [x] Exercise 4
+- [x] Exercise 5 - implement the trace of failures in setup
+- [x] Exercise 6 - sign in using stored state 
+- [ ] Exercise 7 - authentication via API request 
+- [x] Exercise 8- multi-role sign in test
 
 
 ## Exercise 6 - authentication via API request issue

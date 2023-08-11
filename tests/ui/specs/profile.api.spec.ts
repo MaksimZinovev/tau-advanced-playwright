@@ -11,12 +11,12 @@ test(`successful login into bookstore`, async ({ page }) => {
   // Successfully logged in using API login in api-setup
   // Running `npx playwright test profile.api.spec.ts --project=chromium-api`
   // Output: 
-//   Cookies:
-// []
-// state written to file!
-// undefined
-// storageState:
-// { cookies: [], origins: [] }
+  //   Cookies:
+  // []
+  // state written to file!
+  // undefined
+  // storageState:
+  // { cookies: [], origins: [] }
   await expect(page).toHaveURL(/books/i);
   await expect(page.getByText(/tau\-playwright/i)).toBeVisible();
 });
