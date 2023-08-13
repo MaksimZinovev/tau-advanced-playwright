@@ -5,16 +5,17 @@ import path from 'path';
 // require('dotenv').config();
 export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState.json');
 export const STORAGE_STATE_API = path.join(__dirname, './apiStorageState.json');
-export const STORAGE_STATE_SD = path.join(__dirname, './sdStorageStateUser.json');
+export const STORAGE_STATE_SD = path.join(__dirname, './sdStorageStateUserStandard.json');
+export const STORAGE_STATE_SD_PROBLEM = path.join(__dirname, './sdStorageStateUserProblem.json');
 require('dotenv').config();
 
 export default defineConfig({
   reporter: [['html'], ['list']],
   // globalSetup: require.resolve('./tests/setup/global-setup'),
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: undefined,
+  workers: 3,
   // timeout: 5000,
   use: {
     // storageState: 'storageState.json',
@@ -47,18 +48,11 @@ export default defineConfig({
       dependencies: ['auth-setup'],
     },
     {
-      name: 'setup-applitools',
-      testMatch: /applitools-setup\.ts/,
-    },
-    {
-      name: 'chromium-appl',
+      name: 'chromium-guest',
       use: { 
         ...devices['Desktop Chrome'] ,
-        storageState: STORAGE_STATE_APPL,
         headless: false,
-      
-      },
-      dependencies: ['setup-applitools']
+      }
     },
     {
       name: 'setup-api-login',
@@ -76,13 +70,13 @@ export default defineConfig({
     },
     {
       name: 'setup-saucedemo',
-      testMatch: /saucedemo-setup\.ts/,
+      testMatch: /auth-setup-saucedemo\.ts/,
     },
     {
       name: 'chromium-saucedemo',
       use: { 
         ...devices['Desktop Chrome'] ,
-        storageState: STORAGE_STATE_SD,
+        // storageState: STORAGE_STATE_SD,
         headless: false,
       
       },
