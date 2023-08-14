@@ -1,4 +1,4 @@
-import { test } from '../fixtures/books-fixture';
+import { test } from '../fixtures/book-fixture';
 import { APIRequestContext, Page } from '@playwright/test';
 import baseAPIUrl from '../../utils/environmentBaseUrl';
 import deleteBookAPIRequest from '../../api/requests/delete-books-collection';

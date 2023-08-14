@@ -8,7 +8,7 @@ export function buildUrl(page: string, params?: Record<any, any>) {
   const url = params
   ? `${uiPath.concat('?')}${qParams.toString()}`
   : uiPath;
-
+  
   /**
     * page  bookStore
     * uiPath  /books

@@ -4,4 +4,5 @@ export default {
   loginPage: 'login',
   profile: 'profile',
   formPage: 'form',
+  books: 'books',
 };

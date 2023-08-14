@@ -3,11 +3,12 @@ import { buildUrl } from './uiUrlBuilder';
 import BookPage from '../ui/pages/book-page';
 import LoginPage from '../ui/pages/login-page';
 import ProfilePage from '../ui/pages/profile-page';
+import BooksPage from '../ui/pages/book-store-page';
 import FormPage from '../ui/pages/form-page';
 
 async function beforeEach(
   page: Page,
-  PageObjectParam: LoginPage|BookPage|ProfilePage|FormPage,
+  PageObjectParam: LoginPage|BookPage|ProfilePage|FormPage|BooksPage,
   targetPage: string,
   params?: Record<any, any>
 ) {
