@@ -25,6 +25,7 @@ Chapter 1
 Chapter 2
 
 - [x] Exercise 1
+- [x] Exercise 2
 
 Run exercises tests:
 
@@ -38,6 +39,7 @@ Exercise 8: `npx playwright test   profile-stored-auth-multi-role-user-saucedemo
 Chapter 2
 
 Exercise 1: `npx playwright test form-with-dynamic-pom.spec.ts --project=chromium-guest`  
+Exercise 2: `npx playwright test book-store.spec.ts --project=chromium`  
 
 ## Exercise 6 - authentication via API request issue
 
