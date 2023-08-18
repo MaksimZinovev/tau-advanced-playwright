@@ -26,12 +26,14 @@ class BookStorePage {
   }
 
   async checkSearchResultsTitles(expectedTitles: string[]) {
-    await expect(this.resultCellsTitle as Locator).toHaveText(expectedTitles);
 
-    console.log(await (this.resultCellsTitle as Locator).all());
+    await expect(this.resultCellsTitle).toHaveText(expectedTitles);
+    await expect(this.resultCellsTitle).toHaveCount(expectedTitles.length);
 
-    (await (this.resultCellsTitle as Locator).all()).map(
-      async (title) => await expect(title).not.toBeVisible()
+    // console.log(await (this.resultCellsTitle as Locator).all());
+
+    (await (this.resultCellsTitle).all()).map(
+      async (title) => await expect(title).toBeVisible()
     );
   }
   async checkHeader() {

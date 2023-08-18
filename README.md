@@ -24,8 +24,8 @@ Chapter 1
 
 Chapter 2
 
-- [x] Exercise 1
-- [x] Exercise 2
+- [x] Exercise 1 - implement test using dynamic page object
+- [x] Exercise 2 - implement test with fixture
 
 Run exercises tests:
 

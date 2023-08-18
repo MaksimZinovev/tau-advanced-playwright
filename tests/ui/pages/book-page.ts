@@ -68,4 +68,4 @@ class BooksPage {
   }
 }
 
-export default BookPage;
+export default BooksPage;

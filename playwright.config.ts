@@ -7,7 +7,7 @@ export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState
 export const STORAGE_STATE_API = path.join(__dirname, './apiStorageState.json');
 export const STORAGE_STATE_SD = path.join(__dirname, './sdStorageStateUserStandard.json');
 export const STORAGE_STATE_SD_PROBLEM = path.join(__dirname, './sdStorageStateUserProblem.json');
-require('dotenv').config();
+// require('dotenv').config();
 
 export default defineConfig({
   reporter: [['html'], ['list']],
@@ -35,7 +35,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { 
-        headless: false,
+        // headless: false,
         ...devices['Desktop Chrome'],
         storageState: 'storageState.json',
        },
