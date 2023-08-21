@@ -14,8 +14,7 @@ export const test = base.extend<MyFixtures>({
       BookStorePage,
       pages.bookStorePage
     );
-
-    await use(bookStorePage);
+    await use(bookStorePage as BookStorePage);
   },
 });
 

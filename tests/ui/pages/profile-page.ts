@@ -1,6 +1,8 @@
 import { type Page, type Locator , expect, type BrowserContext } from '@playwright/test';
 import bookListData from '../../data/book-list-data';
 import apiPaths from '../../utils/apiPaths';
+import { buildUrl } from '../../utils/uiUrlBuilder';
+import pages from '../../utils/pages';
 
 class SearchPage {
   readonly page: Page;
@@ -12,6 +14,11 @@ class SearchPage {
   readonly notLoggedInLabel: Locator;
   readonly searchField: Locator;
   readonly titleHeaderLabel: Locator;
+  readonly gridRows: Locator;
+  readonly okButtonDeleteDialog: Locator;
+  readonly gridRowDeleteButtonElement: string;
+  readonly noRowsFoundMessage: Locator;
+  readonly resultCellsTitle : Locator;
   
   constructor(page: Page) {
     this.page = page;
@@ -23,11 +30,32 @@ class SearchPage {
     this.notLoggedInLabel = page.getByText('Currently you are not logged into the Book Store application, please visit the login page to enter or register page to register yourself.');
     this.searchField = page.getByPlaceholder('Type to search');
     this.titleHeaderLabel = page.getByText('Title');
+    this.gridRows = page.getByRole("row");
+    this.resultCellsTitle = page.getByRole("row").getByRole("link");
+    this.gridRowDeleteButtonElement = "#delete-record-undefined";
+    this.okButtonDeleteDialog = page.getByRole('button', { name: 'OK' });
+    this.noRowsFoundMessage = page.getByText('No rows found');
+
+  }
+
+  async goto() {
+    await this.page.goto(buildUrl(pages.profile));
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 10000 });
   }
 
   async fillSearchField(q: string) {
     await this.searchField.fill(q);
   }
+
+  async deleteBook(rowNumber: number) {
+    const firstRow = await this.gridRows; //rows start from header "0"
+    await firstRow.locator(this.gridRowDeleteButtonElement).click();
+  }
+
+  async clickOkButtonDeleteDialog() {
+    await this.okButtonDeleteDialog.click();
+  }
+
 
   async checkSearchResult(q: string, items: string) {
   }
@@ -37,6 +65,17 @@ class SearchPage {
       await expect(this.page.getByRole('link', { name: book.title })).toBeVisible();
     }
   }
+  async checkNoBooksDisplaying() {
+    await expect(this.noRowsFoundMessage).toBeVisible();
+  }
+
+  async checkSearchResultsTitles(expectedTitles: string[]) {
+
+    await expect(this.resultCellsTitle).toHaveText(expectedTitles);
+    await expect(this.resultCellsTitle).toHaveCount(expectedTitles.length);
+  }
+
+
 
   async sortBooksList() {
     await this.titleHeaderLabel.click({ clickCount: 2 });

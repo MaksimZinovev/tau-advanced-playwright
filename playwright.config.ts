@@ -1,8 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 import baseEnvUrl from './tests/utils/environmentBaseUrl';
 import path from 'path';
+import dotenv from 'dotenv';
 
-// require('dotenv').config();
+dotenv.config();
 export const STORAGE_STATE_APPL = path.join(__dirname, './applitoolsStorageState.json');
 export const STORAGE_STATE_API = path.join(__dirname, './apiStorageState.json');
 export const STORAGE_STATE_SD = path.join(__dirname, './sdStorageStateUserStandard.json');
@@ -35,13 +36,14 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { 
-        // headless: false,
+        headless: false,
         ...devices['Desktop Chrome'],
         storageState: 'storageState.json',
        },
     },
     {
       name: 'chromium-auth',
+
       use: { 
         ...devices['Desktop Chrome'] ,
         // storageState: '.auth/admin.json', //use this in case you have multiple projects one per user

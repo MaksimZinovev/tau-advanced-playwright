@@ -18,7 +18,7 @@ export const test = base.extend<MyFixtures & Duplicate>({
   bookPage: async ({ page, isDupe }, use) => {
     const bookPage = await hooks.beforeEach(page, BookPage, pages.bookStorePage);
     
-    await use(bookPage);
+    await use(bookPage as BookPage);
     
     await bookPage.addToYourCollection(isDupe);
   },

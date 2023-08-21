@@ -1,4 +1,4 @@
-import { test } from '../fixtures/book-fixture';
+import { test } from '../fixtures/books-fixture';
 import { APIRequestContext, Page } from '@playwright/test';
 import baseAPIUrl from '../../utils/environmentBaseUrl';
 import deleteBookAPIRequest from '../../api/requests/delete-books-collection';
@@ -38,6 +38,8 @@ async function cleanBooks(userId: string, page: Page) {
     await deleteBookAPIRequest.deleteAllBooksByUser(apiContext, userId);
     // await page.reload();
 };
+
+
 
 /**
  * 1. import the fixture file instead of the @playwright/test

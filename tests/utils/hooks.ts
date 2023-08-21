@@ -6,16 +6,18 @@ import ProfilePage from '../ui/pages/profile-page';
 import BookStorePage from '../ui/pages/book-store-page';
 import FormPage from '../ui/pages/form-page';
 
+type PageClass = typeof LoginPage | typeof BookPage | typeof ProfilePage | typeof FormPage | typeof BookStorePage;
+
 async function beforeEach(
   page: Page,
-  PageObjectParam: LoginPage | BookPage | ProfilePage | FormPage | BookStorePage,
+  PageObjectParam: PageClass,
   targetPage: string,
   params?: Record<any, any>
 ) {
   // console.log(`targetPage: ${targetPage}`)
-  await page.goto(buildUrl(targetPage, params), { timeout: 4*10000 });
+  await page.goto(buildUrl(targetPage, params), { timeout: 4 * 10000 });
   await page.waitForLoadState('domcontentloaded', { timeout: 10000 });
-  const pageObject = await new PageObjectParam(page);
+  const pageObject = new PageObjectParam(page);
   return pageObject;
 }
 

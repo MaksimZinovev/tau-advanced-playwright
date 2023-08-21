@@ -25,7 +25,11 @@ Chapter 1
 Chapter 2
 
 - [x] Exercise 1 - implement test using dynamic page object
-- [x] Exercise 2 - implement test with fixture
+- [x] Exercise 2 - implement search test with fixture
+
+Chapter 3
+
+- [x] Exercise 1 -  Implement a new test for "delete 1 book from the collection"
 
 Run exercises tests:
 
@@ -40,6 +44,10 @@ Chapter 2
 
 Exercise 1: `npx playwright test form-with-dynamic-pom.spec.ts --project=chromium-guest`  
 Exercise 2: `npx playwright test book-store.spec.ts --project=chromium`  
+
+Chapter 3
+
+Exercise 1: `npx playwright test book-with-fixture-and-api-isolated-auth.spec.ts --project=chromium`  
 
 ## Exercise 6 - authentication via API request issue
 

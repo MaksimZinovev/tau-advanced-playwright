@@ -3,7 +3,7 @@ import { buildUrl } from '../../utils/uiUrlBuilder';
 import messages from '../../utils/messages';
 import pages from '../../utils/pages';
 
-class BooksPage {
+class BookPage {
   readonly page: Page;
   readonly addToYourCollectionButton: Locator;
   readonly backToBookStoreButton: Locator;
@@ -68,4 +68,4 @@ class BooksPage {
   }
 }
 
-export default BooksPage;
+export default BookPage;

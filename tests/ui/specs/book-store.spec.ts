@@ -41,7 +41,7 @@ test.describe("Book store  - Fixture", () => {
       EXPECTED_SEARCH_RESULTS.jsOneBook.expectedTitles
     );
   });
-  test("Search 'playwright' - no results in Book store", async ({ bookStorePage }) => {
+  test.only("Search 'playwright' - no results in Book store", async ({ bookStorePage }) => {
     await bookStorePage.typeToSearch(EXPECTED_SEARCH_RESULTS.playwrightNoResults.query);
     await bookStorePage.checkSearchResultsTitles(
       EXPECTED_SEARCH_RESULTS.playwrightNoResults.expectedTitles
