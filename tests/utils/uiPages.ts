@@ -1,5 +1,5 @@
 export default {
-    book: 'book',
+    book: '/book',
     bookStore: '/books',
     home: '/',
     login: '/login',

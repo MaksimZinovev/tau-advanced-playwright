@@ -4,6 +4,10 @@ export default {
     post: 'api.books/post',
     put: 'api.books/put',
   },
+  book: {
+    delete: 'api.book/delete',
+    get: 'api.book/get',
+  },
   account: {
     get: 'api.account/get',
   }

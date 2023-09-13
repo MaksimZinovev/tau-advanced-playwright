@@ -5,4 +5,5 @@ export default {
   profile: 'profile',
   formPage: 'form',
   books: 'books',
+  book: 'book',
 };

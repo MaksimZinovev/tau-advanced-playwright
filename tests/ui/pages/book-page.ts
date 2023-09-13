@@ -48,7 +48,10 @@ class BookPage {
   async checkTitle(title: string) {
   }
 
-  async checkAddedToYourCollection(isDupe: boolean) {
+  async checkAddedToYourCollection(name: string) {
+    await this.page.goto('https://demoqa.com/profile');
+    await expect(this.page.getByRole('link', { name: name })).toBeVisible();
+
   }
 
   async clickAtSpeakingJSBook() {

@@ -1,5 +1,6 @@
 import { type Page, type Locator , expect } from '@playwright/test';
 import messages from '../../utils/messages';
+import uiPages from '../../utils/uiPages';
 
 class LoginPage {
   readonly page: Page;
@@ -16,6 +17,14 @@ class LoginPage {
     this.userName = page.getByPlaceholder('UserName');
   }
 
+  async goto() {
+    // await this.page.goto(uiPages.login);
+    await this.page.goto('/login');
+    console.log(this.page.url());
+  }
+  async waitForURL(url: string) {
+    await this.page.waitForURL(uiPages.profile) ;
+  }
   async fillEmail(email: string) {
     await this.userName.fill(email);
   }
@@ -27,7 +36,9 @@ class LoginPage {
   async doLogin(email: string, password: string) {
     await this.fillEmail(email);
     await this.fillPassword(password);
-    await this.loginButton.click();
+    await this.loginButton.click()
+    await this.waitForURL(uiPages.profile);
+    await this.checkLoggedIn();;
   }
 
   async checkLoggedIn() {

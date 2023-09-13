@@ -1,8 +1,10 @@
 import { test } from '../fixtures/books-fixture';
-import { APIRequestContext, Page } from '@playwright/test';
+import { APIRequestContext, Page, expect } from '@playwright/test';
 import baseAPIUrl from '../../utils/environmentBaseUrl';
 import deleteBookAPIRequest from '../../api/requests/delete-books-collection';
 import userData from '../../data/user-data';
+import { executeRequest } from '../../utils/apiRequestUtils';
+import apiMethods from '../../utils/apiMethods';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -32,12 +34,33 @@ test.describe('Books - Fixture & API', () => {
         await cleanBooks(userId, page);
         await bookPage.goto(userData.books.new);
     });
+    test('Add brand new book then delete one book via API', async ({ page, bookPage }) => { //first thing that will happen is to call the fixture automatically. whenever the fixture has a "use" it goes back to the test and then go back to the fixture again when the test is done and execute any remaining commands
+        await cleanBooks(userId, page);
+
+        await bookPage.goto(userData.books.new);
+        await bookPage.addToYourCollection();
+        await deleteBookByISBN(userId, userData.books.new, page);
+        // Check that the book is deleted
+        let response = await executeRequest(
+            apiContext,
+            'https://demoqa.com/Account/v1/User/2f24c011-a654-4781-9f42-b8b6bfcf7d10',
+            apiMethods.get,
+            {}
+        );
+        const responseBody = await response.json();
+        await expect(responseBody.books).toHaveLength(0);
+    });
 });
 
 async function cleanBooks(userId: string, page: Page) {
     await deleteBookAPIRequest.deleteAllBooksByUser(apiContext, userId);
+
     // await page.reload();
 };
+
+async function deleteBookByISBN(userId: string, isbn: string, page: Page) {
+    await deleteBookAPIRequest.deleteBookAPIByIsbn(apiContext, userId, isbn);
+}
 
 
 

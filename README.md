@@ -29,7 +29,7 @@ Chapter 2
 
 Chapter 3
 
-- [x] Exercise 1 -  Implement a new test for "delete 1 book from the collection"
+- [x] Exercise 1 -  Implement a new test for "delete 1 book from the collection" using UI and API.
 
 Run exercises tests:
 
@@ -47,7 +47,8 @@ Exercise 2: `npx playwright test book-store.spec.ts --project=chromium`
 
 Chapter 3
 
-Exercise 1: `npx playwright test book-with-fixture-and-api-isolated-auth.spec.ts --project=chromium`  
+Exercise 1 (UI): `npx playwright test book-with-fixture-and-api-isolated-auth.spec.ts --project=chromium`  
+Exercise 1 (API): `npx playwright test book-with-fixture-and-api.spec.ts --project=chromium-auth`  
 
 ## Exercise 6 - authentication via API request issue
 
